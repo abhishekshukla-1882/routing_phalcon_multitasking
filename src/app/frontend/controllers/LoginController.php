@@ -1,5 +1,5 @@
 <?php
-namespace Multi\Back\Controllers;
+namespace Multi\Frontend\Controllers;
 use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
 use Phalcon\Http\Response;
@@ -19,18 +19,6 @@ class LoginController extends Controller
     public function addproductAction(){
         
     }
-
-
-
-
-
-
-
-
-
-
-
-    
     // public function indexAction()
     // {
     //     // echo '<pre>';

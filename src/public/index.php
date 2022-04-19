@@ -147,8 +147,14 @@ $container->set(
     function () {
         $router = new Router();
 
-        // $router->setDefaultModule('front');
+        $router->setDefaultModule('frontend');
 
+        $router->add('/:controller/:action', [
+            'module'     => 'admin',
+            'controller' => 1,
+            'action'     => 2,
+        ])->setName('admin');
+        
         $router->add(
             '/login',
             [
@@ -158,14 +164,70 @@ $container->set(
             ]
         );
         $router->add(
-            '/login/l',
+            '',
             [
-                'module'     => 'admin',
-                'controller' => 'login',
-                'action'     => 'logout',
-            ]
-        );
-
+                'module'     => 'frontend',
+                'controller' => 'index',
+                'action'     => 'index',
+                ]
+            );
+            $router->add(
+                '/login/l',
+                [
+                    'module'     => 'admin',
+                    'controller' => 'login',
+                    'action'     => 'logout',
+                    ]
+                );
+            $router->add(
+                '/addproduct',
+                [
+                    'module'     => 'admin',
+                    'controller' => 'product',
+                    'action'     => 'addproduct',
+                ]
+            );
+            $router->add(
+                '/editproduct',
+                [
+                    'module'     => 'admin',
+                    'controller' => 'product',
+                    'action'     => 'editproduct',
+                ]
+            );
+            $router->add(
+                '/delete_product',
+                [
+                    'module'     => 'admin',
+                    'controller' => 'product',
+                    'action'     => 'delete_product',
+                ]
+            );
+            $router->add(
+                '/update',
+                [
+                    'module'     => 'admin',
+                    'controller' => 'product',
+                    'action'     => 'update',
+                ]
+            );
+            $router->add(
+                '/deleteproduct',
+                [
+                    'module'     => 'admin',
+                    'controller' => 'product',
+                    'action'     => 'deleteproduct',
+                ]
+            );
+            
+            $router->add(
+                '/display',
+                [
+                    'module'     => 'admin',
+                    'controller' => 'product',
+                    'action'     => 'display',
+                ]
+            ); 
         $router->add(
             '/admin/products/:action',
             [
@@ -190,13 +252,13 @@ $container->set(
 $application->registerModules(
     [
         'admin' => [
-            'className' => \Multi\back\Module::class,
+            'className' => \Multi\Back\Module::class,
             'path'      => APP_PATH.'/admin/Module.php',
         ],
-        // 'back'  => [
-        //     'className' => \Multi\Back\Module::class,
-        //     'path'      => '../apps/back/Module.php',
-        // ]
+        'frontend'  => [
+            'className' => \Multi\Frontend\Module::class,
+            'path'      => '../app/frontend/Module.php',
+        ]
     ]
 );
 
