@@ -1,0 +1,90 @@
+<?php
+
+// echo "<pre>";
+// print_r($prod);
+// die;
+
+
+?>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+<link rel="stylesheet" href="/home/cedcoss/git /events_phalcon/src/app/views/index/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+          ></script>
+    
+<style>
+  body{
+    /* background-image:url("https://i.gifer.com/1KLD.gif");
+    background-repeat: repeat; */
+
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <div class = 'container m-5'><form method='POST' action='/login/search'>
+      <input type='text' id='search' name='search' placeholder='search your product here'/><button type='submit' class='btn btn-primary'>Search</button>
+      </form>
+    
+    <?php foreach($prod as $key=>$value){ ?>
+    <tr>
+        
+        
+        <th scope='row'>2</th>
+        <td><?php echo $value->name; ?></td>
+        <td><?php echo $value->category; ?></td>
+        <td><?php echo $value->price; ?></td>
+        <td><?php echo $value->stock ; ?></td>
+        <td>
+          <!-- -------------------------------Action Edit Or Delete Products-------------------------------- -->
+            <form action="/login/edit" method="POST">
+                <input type="hidden" name="id_container" value = "<?php echo $value->_id ?>">
+                <button type="submit" name="Edit" class="btn btn-primary">Edit</button>
+            </form>
+            <form action="/login/delete" method="POST">
+                <input type="hidden" name="id_container" value = "<?php echo $value->_id ?>">
+                <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+            </form>
+            <!-- Button trigger modal -->
+          <!-- -------------------------------Action Edit Or Delete Products-------------------------------- -->
+
+            
+    </td>
+      
+    </tr>
+    <?php } 
+    echo $html;?>
+  </tbody>
+</table>
+
+<script src="http://localhost:8080/js/script.js">
+// <script src="http://localhost:8080/js/script2.js">
+
+<script>
+
+</script>
+</body>
+</html>
